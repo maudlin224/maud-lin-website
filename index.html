@@ -94,7 +94,13 @@ section{scroll-margin-top:88px}
 .project-visual:before{content:"";width:68%;height:65%;background:var(--ivory);border:1px solid var(--line);border-radius:10px;box-shadow:0 24px 55px color-mix(in srgb,var(--ink) 11%,transparent);transform:rotate(-7deg);transition:transform .35s}
 .project:hover .project-visual:before{transform:rotate(-4deg) scale(1.04)}
 .placeholder-label{position:absolute;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em;font-weight:800;background:color-mix(in srgb,var(--ivory) 92%,transparent);padding:12px 18px;border:1px dashed var(--line-strong);border-radius:5px}
-.photo-placeholder{aspect-ratio:4/5;background:linear-gradient(135deg,var(--sky-soft),var(--soft) 60%,var(--sage-soft));border:1px dashed var(--line-strong);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em}
+.portrait-card{width:100%;max-width:440px;margin:0 auto}
+.portrait-shell{position:relative;display:block;isolation:isolate;padding:0 14px 14px 0}
+.portrait-shell:before{content:"";position:absolute;inset:14px 0 0 14px;background:var(--primary);border-radius:24px;z-index:-1}
+.portrait-photo{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 24%;border-radius:24px;border:1px solid var(--line);box-shadow:0 18px 42px color-mix(in srgb,var(--ink) 8%,transparent)}
+.portrait-caption{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:24px;padding-right:14px}
+.portrait-caption h3{margin:0;font-size:22px;font-weight:800;letter-spacing:.03em}
+.portrait-caption span{font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--muted)}
 .contact-panel{position:relative;overflow:hidden;background:linear-gradient(125deg,var(--sage-soft),var(--ivory) 50%,var(--blush-soft));border:1px solid var(--line);border-radius:18px;padding:clamp(36px,7vw,100px)}
 .contact-panel:after{content:"";position:absolute;width:380px;height:380px;border:1px solid var(--sage);border-radius:50%;right:-180px;bottom:-240px;pointer-events:none}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease-out,transform .7s ease-out}
@@ -164,6 +170,37 @@ section{scroll-margin-top:88px}
 footer { background: var(--soft); }
 ::selection { color: var(--ink); background: var(--primary); }
 
+/* 真實現場照片：展演大圖與內訓圖庫，以完整構圖呈現。 */
+.showcase-group{margin-top:48px}
+.showcase-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.showcase-heading h3{margin:0;font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.03em}
+.showcase-count{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:var(--primary-soft);border-radius:99px;font-size:11px;font-weight:700;color:var(--ink)}
+.showcase-count.training{background:var(--sage-soft)}
+.showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.training-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.scene-card{min-width:0;margin:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--ivory);transition:transform var(--duration),box-shadow var(--duration),border-color var(--duration)}
+.scene-card:hover{transform:translateY(-4px);border-color:var(--line-strong);box-shadow:0 16px 36px color-mix(in srgb,var(--ink) 7%,transparent)}
+.scene-image{display:block;position:relative;aspect-ratio:4/3;background:var(--soft)}
+.scene-image img{display:block;width:100%;height:100%;object-fit:contain}
+.training-grid .scene-image{aspect-ratio:5/3}
+.training-grid .scene-image img{object-fit:scale-down}
+.scene-image:focus-visible{outline:3px solid var(--ink);outline-offset:-5px;border-radius:0}
+.photo-open{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:99px;background:color-mix(in srgb,var(--ivory) 94%,transparent);color:var(--ink);font-size:10px;font-weight:700}
+.scene-caption{padding:22px 24px}
+.scene-caption h4{margin:0 0 8px;font-size:18px;font-weight:800;line-height:1.5}
+.scene-caption p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.training-grid .scene-caption{padding:18px}
+.training-grid .scene-caption h4{font-size:15px}
+.case-archive{margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+.case-archive summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;list-style:none;font-size:18px;font-weight:800}
+.case-archive summary::-webkit-details-marker{display:none}
+.case-archive summary:focus-visible{outline:3px solid var(--ink);outline-offset:4px;border-radius:4px}
+.case-archive-state{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;color:var(--muted)}
+.case-archive-state i{transition:transform var(--duration)}
+.case-archive[open] .case-archive-state i{transform:rotate(45deg)}
+@media(max-width:1023px){.training-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){.showcase-grid,.training-grid{grid-template-columns:1fr;gap:20px}.portrait-card{max-width:380px}.scene-caption{padding:20px}.showcase-group{margin-top:36px}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 *,*:before,*:after{animation:none!important;transition:none!important}
 .reveal{opacity:1;transform:none}
@@ -187,7 +224,12 @@ footer { background: var(--soft); }
 </div><div class="hero-art" aria-label="從複雜資訊到清晰設計的抽象視覺示意" role="img"><div class="art-halo"></div><div class="art-board"><div class="flex items-center gap-2 mb-7"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="w-2 h-2 rounded-full bg-warm"></span><span class="w-2 h-2 rounded-full bg-warm"></span><span class="text-[10px] font-bold text-subtle ml-auto">EXPERIENCE / SYSTEM</span></div><div class="flex items-center gap-2 mb-6"><div class="bar w-1/2"></div><div class="bar w-1/4"></div></div><div class="grid grid-cols-3 gap-3 items-center"><div class="art-node text-center"><span class="text-ink text-xl">◇</span><div class="text-[9px] mt-2 font-bold">NEEDS</div></div><div class="art-node text-center"><span class="text-ink text-xl">◎</span><div class="text-[9px] mt-2 font-bold">STRATEGY</div></div><div class="art-node text-center"><span class="text-ink text-xl">▣</span><div class="text-[9px] mt-2 font-bold">DESIGN</div></div></div><div class="flex items-center gap-3 my-6"><div class="art-line"></div><span class="text-ink text-xs">↓</span><div class="art-line"></div></div><div class="bg-primary rounded-lg p-5 text-ink"><div class="text-[10px] tracking-[.2em] opacity-70">THE OUTCOME</div><div class="text-2xl font-extrabold mt-2">Clarity by Design.</div><div class="h-1 w-2/3 bg-ink-soft rounded mt-4"></div></div></div><div class="art-float one"><span class="text-ink">●</span> Human-centered</div><div class="art-float two">✳ From complexity to clarity</div></div>
 </div><div class="container-custom relative z-10 mt-12 lg:mt-0"><a href="#about" class="inline-flex items-center gap-4 text-[10px] font-extrabold tracking-[.2em] text-muted">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div></section>
 <section id="about" class="py-20 md:py-32"><div class="container-custom"><div class="reveal"><p class="eyebrow mb-5">01 / ABOUT ME</p><h2 class="section-title max-w-3xl">設計始於理解，<br>價值來自實踐。</h2></div>
-<div class="grid md:grid-cols-[.75fr_1.25fr] gap-12 lg:gap-24 mt-14 md:mt-20 items-start"><div class="reveal"><div class="photo-placeholder"><div><div class="text-5xl mb-5 text-ink">◇</div>PORTRAIT PLACEHOLDER<br><span class="normal-case tracking-normal">個人照片待提供</span></div></div><div class="mt-5"><p class="font-extrabold text-xl">林倩伃 <span class="text-sm text-subtle ml-2">LIN CIANYU</span></p><p class="text-sm text-muted mt-2">Senior UI/UX Designer</p></div></div><div class="reveal"><p class="text-xl md:text-2xl font-bold leading-relaxed tracking-tight mb-7">「好的設計，不只是讓產品看起來更好，而是讓每一次互動都更直覺、更有效率。」</p><p class="muted mb-5">擁有 12 年數位產品與使用者介面設計經驗，專注於將使用者需求、商業目標與技術可行性整合為兼具美感與實用性的數位體驗。</p><p class="muted">相信設計不只是視覺呈現，更是透過系統性思考與持續優化，為使用者與企業創造長期價值。</p><div class="grid grid-cols-3 gap-4 border-y border-theme py-9 mt-10"><div><div class="stat-num text-ink">12+</div><div class="text-xs text-muted mt-2">Years of Experience</div></div><div><div class="stat-num text-ink text-[clamp(1.6rem,3vw,3rem)]">Cross<br>Industry</div><div class="text-xs text-muted mt-2">Design Expertise</div></div><div><div class="stat-num text-ink">0→1</div><div class="text-xs text-muted mt-2">Product Design</div></div></div></div></div>
+<div class="grid md:grid-cols-[.75fr_1.25fr] gap-12 lg:gap-24 mt-14 md:mt-20 items-start"><figure class="portrait-card reveal">
+<a class="portrait-shell" href="作品集/鍾皓軒-headshot-01.jpg" target="_blank" rel="noopener noreferrer" aria-label="檢視鍾皓軒個人照原圖（另開分頁）">
+<img class="portrait-photo" src="assets/portfolio/headshot-640.jpg" srcset="assets/portfolio/headshot-640.jpg 640w, assets/portfolio/headshot-960.jpg 960w" sizes="(min-width: 1280px) 426px, (min-width: 768px) 34vw, (min-width: 600px) 426px, (min-width: 420px) 366px, calc(100vw - 50px)" width="640" height="961" alt="鍾皓軒穿著西裝的個人形象照" loading="lazy" decoding="async">
+</a>
+<figcaption class="portrait-caption"><h3>鍾皓軒</h3><span>PERSONAL PORTRAIT</span></figcaption>
+</figure><div class="reveal"><p class="text-xl md:text-2xl font-bold leading-relaxed tracking-tight mb-7">「好的設計，不只是讓產品看起來更好，而是讓每一次互動都更直覺、更有效率。」</p><p class="muted mb-5">擁有 12 年數位產品與使用者介面設計經驗，專注於將使用者需求、商業目標與技術可行性整合為兼具美感與實用性的數位體驗。</p><p class="muted">相信設計不只是視覺呈現，更是透過系統性思考與持續優化，為使用者與企業創造長期價值。</p><div class="grid grid-cols-3 gap-4 border-y border-theme py-9 mt-10"><div><div class="stat-num text-ink">12+</div><div class="text-xs text-muted mt-2">Years of Experience</div></div><div><div class="stat-num text-ink text-[clamp(1.6rem,3vw,3rem)]">Cross<br>Industry</div><div class="text-xs text-muted mt-2">Design Expertise</div></div><div><div class="stat-num text-ink">0→1</div><div class="text-xs text-muted mt-2">Product Design</div></div></div></div></div>
 <div class="mt-20 reveal"><p class="eyebrow mb-6">INDUSTRY EXPERTISE</p><div class="grid md:grid-cols-2 gap-4" id="industries"></div></div>
 <div class="mt-20 reveal"><p class="eyebrow mb-6">CORE COMPETENCIES</p><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="competencies"></div></div>
 <div class="mt-16 grid lg:grid-cols-2 gap-12 lg:gap-20"><div class="reveal"><p class="eyebrow mb-7">DESIGN TOOLKIT</p><div id="toolkit" class="divide-y divide-theme border-y border-theme"></div></div><div class="reveal"><p class="eyebrow mb-7">DESIGN PHILOSOPHY</p><h3 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-5">Design with Purpose.<br><span class="accent-highlight">Create with Impact.</span></h3><p class="muted">我相信，真正優秀的設計來自對問題的深入理解，而非單純追求視覺效果。從需求探索、設計規劃到產品落地，我致力於在使用者體驗、商業價值與技術限制之間找到最佳平衡，透過清晰的設計邏輯與持續迭代，打造直覺、可靠且具有長期價值的數位產品。讓設計不只解決當下的問題，更為未來創造可能。</p></div></div>
@@ -195,7 +237,64 @@ footer { background: var(--soft); }
 <section id="services" class="surface py-20 md:py-32"><div class="container-custom"><div class="reveal grid lg:grid-cols-[1fr_.75fr] gap-8 items-end"><div><p class="eyebrow mb-5">02 / WHAT I DO</p><h2 class="section-title">以設計賦能產品，<br>讓創新構想轉化為實際價值。</h2></div><p class="muted">從需求探索到產品落地，提供完整的 UI/UX 設計解決方案。結合 12 年跨產業經驗，協助團隊釐清問題、建立方向，將複雜需求轉化為直覺、高效且具擴展性的數位體驗。</p></div><div class="grid md:grid-cols-2 gap-4 mt-14" id="service-cards"></div>
 <div class="mt-24 reveal"><div class="flex flex-wrap justify-between items-end gap-4 mb-10"><div><p class="eyebrow mb-4">DESIGN PROCESS</p><h3 class="text-3xl md:text-4xl font-extrabold tracking-tight">From Complexity to Clarity.</h3></div><p class="text-sm text-muted">依專案需求彈性調整的設計方法框架</p></div><div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-3 border-l md:border-l-0 md:border-t border-theme ml-2 md:ml-0" id="process"></div></div>
 <div class="mt-20 border-t border-theme pt-12 flex flex-col md:flex-row gap-8 justify-between items-start md:items-center reveal"><div><h3 class="text-2xl font-extrabold mb-3">從 0 到 1，讓每個設計決策創造價值。</h3><p class="muted max-w-2xl">不只是提供介面設計，更致力於協助團隊釐清問題、建立方向並推動產品實現。</p></div><a class="btn btn-primary booking-link shrink-0" target="_blank" rel="noopener noreferrer">Let's Build Something Meaningful <span class="arrow">↗</span></a></div></div></section>
-<section id="works" class="py-20 md:py-32"><div class="container-custom"><div class="reveal"><p class="eyebrow mb-5">03 / SELECTED WORKS</p><h2 class="section-title">讓設計思考，<br>成為看得見的成果。</h2><p class="muted max-w-2xl mt-7">每個專案都是一次理解問題、探索可能與創造價值的過程。以下為案例展示架構，正式作品內容與畫面將陸續補充。</p></div><div id="projects" class="mt-10"></div></div></section>
+<section id="works" class="py-20 md:py-32" aria-labelledby="works-title">
+<div class="container-custom">
+<div class="reveal"><p class="eyebrow mb-5">03 / SELECTED WORKS</p><h2 id="works-title" class="section-title">從教室到舞台，<br>讓專業在現場發生。</h2><p class="muted max-w-2xl mt-7">從企業內訓到專案展演，透過真實現場記錄，分享知識交流、實作與成果呈現的過程。</p></div>
+<div class="showcase-group" role="group" aria-labelledby="expo-title">
+<div class="showcase-heading reveal"><h3 id="expo-title">專案展演與產業交流</h3><span class="showcase-count">02 / ON STAGE</span></div>
+<div class="showcase-grid">
+<figure class="scene-card reveal">
+<a class="scene-image" href="作品集/國科會-expo-stage-01.jpg" target="_blank" rel="noopener noreferrer" aria-label="檢視國科會專案展演現場原圖（另開分頁）">
+<img src="作品集/國科會-expo-stage-01.jpg" width="661" height="463" alt="國科會專案展演現場，講者在大型簡報螢幕旁分享，觀眾席位於舞台前方" loading="lazy" decoding="async">
+<span class="photo-open" aria-hidden="true">檢視原圖 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+</a>
+<figcaption class="scene-caption"><h4>國科會｜專案展演</h4><p>將專案成果帶上舞台，與現場觀眾分享想法、交流應用。</p></figcaption>
+</figure>
+<figure class="scene-card reveal">
+<a class="scene-image" href="作品集/台灣 Top3 IC設計-expo-stage-02.jpg" target="_blank" rel="noopener noreferrer" aria-label="檢視台灣 Top3 IC 設計產業展演現場原圖（另開分頁）">
+<img src="作品集/台灣 Top3 IC設計-expo-stage-02.jpg" width="564" height="463" alt="產業展演現場的簡報舞台、展場燈光與觀眾席" loading="lazy" decoding="async">
+<span class="photo-open" aria-hidden="true">檢視原圖 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+</a>
+<figcaption class="scene-caption"><h4>台灣 Top3 IC 設計｜展演交流</h4><p>在產業交流現場，呈現實作經驗與專案成果。</p></figcaption>
+</figure>
+</div>
+</div>
+<div class="showcase-group" role="group" aria-labelledby="training-title">
+<div class="showcase-heading reveal"><h3 id="training-title">企業內訓與知識分享</h3><span class="showcase-count training">04 / IN THE CLASSROOM</span></div>
+<div class="training-grid">
+<figure class="scene-card reveal">
+<a class="scene-image" href="作品集/台灣 Top3 電信業-training-classroom-01.png" target="_blank" rel="noopener noreferrer" aria-label="檢視台灣 Top3 電信業內訓現場原圖（另開分頁）">
+<img src="assets/portfolio/training-telecom.jpg" width="350" height="210" alt="電信業內訓教室，講者在前方授課，學員使用桌上型電腦操作" loading="lazy" decoding="async">
+<span class="photo-open" aria-hidden="true">檢視原圖 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+</a>
+<figcaption class="scene-caption"><h4>台灣 Top3 電信業</h4><p>企業內訓現場</p></figcaption>
+</figure>
+<figure class="scene-card reveal">
+<a class="scene-image" href="作品集/工研院-training-classroom-02.png" target="_blank" rel="noopener noreferrer" aria-label="檢視工研院內訓現場原圖（另開分頁）">
+<img src="assets/portfolio/training-itri.jpg" width="720" height="432" alt="工研院內訓現場，講者搭配投影簡報說明，學員以筆記型電腦參與" loading="lazy" decoding="async">
+<span class="photo-open" aria-hidden="true">檢視原圖 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+</a>
+<figcaption class="scene-caption"><h4>工研院</h4><p>教學與實作交流</p></figcaption>
+</figure>
+<figure class="scene-card reveal">
+<a class="scene-image" href="作品集/資策會-training-classroom-03.png" target="_blank" rel="noopener noreferrer" aria-label="檢視資策會課堂現場原圖（另開分頁）">
+<img src="assets/portfolio/training-iii-720.jpg" srcset="assets/portfolio/training-iii-720.jpg 720w, assets/portfolio/training-iii-1280.jpg 1280w" sizes="(min-width: 1324px) 305px, (min-width: 1024px) calc((100vw - 104px) / 4), (min-width: 600px) calc((100vw - 64px) / 2), calc(100vw - 38px)" width="720" height="432" alt="資策會課堂現場，講者說明機器學習簡報，學員在教室內參與討論與操作" loading="lazy" decoding="async">
+<span class="photo-open" aria-hidden="true">檢視原圖 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+</a>
+<figcaption class="scene-caption"><h4>資策會</h4><p>課堂討論與實作</p></figcaption>
+</figure>
+<figure class="scene-card reveal">
+<a class="scene-image" href="作品集/台灣 Top3 航空業-training-classroom-04.png" target="_blank" rel="noopener noreferrer" aria-label="檢視台灣 Top3 航空業內訓現場原圖（另開分頁）">
+<img src="assets/portfolio/training-aviation.jpg" width="720" height="432" alt="航空業內訓教室，講者在投影螢幕旁授課，學員使用電腦進行實作" loading="lazy" decoding="async">
+<span class="photo-open" aria-hidden="true">檢視原圖 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+</a>
+<figcaption class="scene-caption"><h4>台灣 Top3 航空業</h4><p>企業內訓與實作</p></figcaption>
+</figure>
+</div>
+</div>
+<details class="case-archive reveal"><summary><span>更多設計案例</span><span class="case-archive-state">整理中 <i class="fa-solid fa-plus" aria-hidden="true"></i></span></summary><div id="projects" class="mt-6"></div></details>
+</div>
+</section>
 <section id="insights" class="surface py-20 md:py-32"><div class="container-custom"><div class="reveal flex flex-col md:flex-row justify-between gap-8 items-start md:items-end"><div><p class="eyebrow mb-5">04 / INSIGHTS</p><h2 class="section-title">持續探索設計、科技<br>與使用者體驗的可能。</h2></div><p class="muted max-w-sm">分享關於數位產品設計、使用者體驗、設計方法與新興技術的觀察與思考。</p></div><div class="grid md:grid-cols-3 gap-4 mt-14" id="articles"></div></div></section>
 <section id="solutions" class="py-20 md:py-32" aria-labelledby="solutions-title">
 <div class="container-custom">
