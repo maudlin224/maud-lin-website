@@ -36,7 +36,7 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;color:var(--ink);font-family:Manrope,"Noto Sans TC",sans-serif;background:var(--ivory);overflow-x:hidden}
+body{margin:0;color:var(--ink);font-family:Manrope,"Noto Sans TC",sans-serif;background:var(--ivory);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 button,a{ -webkit-tap-highlight-color:transparent}
 a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:4px;border-radius:4px}
 a{text-decoration:none}
@@ -201,6 +201,84 @@ footer { background: var(--soft); }
 @media(max-width:1023px){.training-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:599px){.showcase-grid,.training-grid{grid-template-columns:1fr;gap:20px}.portrait-card{max-width:380px}.scene-caption{padding:20px}.showcase-group{margin-top:36px}}
 
+
+/* 首屏影片背景：依實際容器尺寸 cover，文字使用獨立深色遮罩。 */
+.hero{min-height:100vh;min-height:100svh;padding:132px 0 36px;display:flex;flex-direction:column;justify-content:center;isolation:isolate;background:var(--ink);color:var(--ivory)}
+.hero-media{position:absolute;inset:0;overflow:hidden;z-index:0;background:var(--ink) url("assets/video/hero-poster.jpg") center/cover no-repeat;pointer-events:none}
+.hero-media iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);border:0;opacity:0;transition:opacity 800ms ease;pointer-events:none}
+.hero.video-ready .hero-media iframe{opacity:1}
+.hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 90%,transparent),color-mix(in srgb,var(--ink) 76%,transparent) 55%,color-mix(in srgb,var(--ink) 52%,transparent)),linear-gradient(0deg,color-mix(in srgb,var(--ink) 78%,transparent),transparent 50%,color-mix(in srgb,var(--ink) 60%,transparent))}
+.hero-main{position:relative;z-index:2;flex:1;display:flex;align-items:center}
+.hero-copy{width:100%;max-width:880px;padding:clamp(28px,6vh,84px) 0}
+.hero .eyebrow{color:var(--primary);font-size:12px;letter-spacing:.2em;margin-bottom:30px;line-height:1.8}
+.hero-title{font-size:clamp(2.65rem,6.2vw,6rem);font-weight:800;letter-spacing:-.035em;line-height:1.22;min-height:0;margin:0 0 30px;text-wrap:balance;text-shadow:0 3px 24px color-mix(in srgb,var(--ink) 50%,transparent)}
+.hero-title .type-text{color:var(--ivory)}
+.hero-title .hero-title-accent{color:var(--primary)}
+.hero-role{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.hero-role-rule{width:36px;height:2px;background:var(--primary);flex-shrink:0}
+.hero-role p{font-size:clamp(12px,1.2vw,15px);font-weight:600;line-height:1.8;letter-spacing:.035em;color:var(--ivory)}
+.hero-description{max-width:650px;margin:0 0 34px;color:var(--ivory);font-size:clamp(15px,1.3vw,18px);font-weight:400;line-height:1.95;text-shadow:0 2px 12px color-mix(in srgb,var(--ink) 55%,transparent)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero .btn{min-height:52px;padding:15px 24px;font-size:14px}
+.hero .btn-primary:hover{background:var(--ivory);color:var(--ink)}
+.hero .btn-outline{background:color-mix(in srgb,var(--ink) 40%,transparent);border-color:var(--ivory);color:var(--ivory);backdrop-filter:blur(8px)}
+.hero .btn-outline:hover{background:var(--ivory);color:var(--ink)}
+.hero :is(a,button):focus-visible{outline-color:var(--primary)}
+.hero-footer{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px}
+.hero-scroll{display:inline-flex;align-items:center;gap:16px;min-height:44px;color:var(--ivory);font-size:10px;font-weight:800;letter-spacing:.18em}
+.hero-video-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.video-toggle,.hero-watch-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid color-mix(in srgb,var(--ivory) 55%,transparent);border-radius:99px;background:color-mix(in srgb,var(--ink) 68%,transparent);color:var(--ivory);font:inherit;font-size:12px;font-weight:600;line-height:1.5;transition:background var(--duration),color var(--duration)}
+.video-toggle[hidden]{display:none}
+.video-toggle:hover,.hero-watch-link:hover{background:var(--ivory);color:var(--ink)}
+.nav:not(.scrolled):not(.menu-open){background:linear-gradient(color-mix(in srgb,var(--ink) 60%,transparent),transparent)}
+.nav:not(.scrolled):not(.menu-open) .container-custom>a,.nav:not(.scrolled):not(.menu-open) .nav-link{color:var(--ivory)}
+.nav:not(.scrolled):not(.menu-open) .nav-link:hover,.nav:not(.scrolled):not(.menu-open) .nav-link.active{color:var(--primary);text-decoration-color:var(--primary)}
+.nav:not(.scrolled):not(.menu-open) #menu-toggle{background:color-mix(in srgb,var(--ink) 40%,transparent);color:var(--ivory);border-color:color-mix(in srgb,var(--ivory) 65%,transparent)}
+.nav:not(.scrolled):not(.menu-open) :is(a,button):focus-visible{outline-color:var(--primary)}
+@media(max-width:767px){.hero{min-height:100vh;min-height:100svh;padding:116px 0 28px}.hero-copy{padding:28px 0}.hero-title{font-size:clamp(2.45rem,7.6vw,3.8rem);letter-spacing:-.03em;line-height:1.3}.hero .eyebrow{font-size:10px;letter-spacing:.14em;margin-bottom:24px}.hero-shade{background:linear-gradient(180deg,color-mix(in srgb,var(--ink) 86%,transparent),color-mix(in srgb,var(--ink) 76%,transparent) 55%,color-mix(in srgb,var(--ink) 90%,transparent))}.hero-description{line-height:1.9}.hero-footer{gap:12px}.hero-video-tools{gap:8px}}
+@media(max-width:399px){.hero-actions{flex-direction:column;align-items:stretch}.hero-title{font-size:2.35rem}.hero-video-tools{width:100%;justify-content:flex-end}}
+
+/* 聯絡資訊與需求表單。 */
+.contact-details{list-style:none;padding:0;margin:0 0 32px;display:grid;gap:14px}
+.contact-details li{display:flex;align-items:flex-start;gap:16px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}
+.contact-detail-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:var(--primary);color:var(--ink);font-size:18px}
+.contact-details li:nth-child(2) .contact-detail-icon{background:var(--sage)}
+.contact-details li:nth-child(3) .contact-detail-icon{background:var(--sky)}
+.contact-detail-copy{min-width:0}
+.contact-detail-label{display:block;margin-bottom:5px;color:var(--muted);font-size:12px;font-weight:600}
+.contact-details a{display:inline-block;color:var(--ink);font-size:15px;font-weight:700;line-height:1.8;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.contact-details address{font-style:normal}
+.contact-form-card:hover{transform:none;box-shadow:none;border-color:var(--line);border-top-color:var(--card-accent)}
+.contact-form{display:grid;gap:22px;margin-top:28px;width:100%}
+.contact-form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.contact-field{display:grid;gap:9px;min-width:0}
+.contact-field label,.contact-services legend{color:var(--ink);font-size:14px;font-weight:700;line-height:1.6}
+.field-required{margin-left:6px;font-size:10px;font-weight:500;color:var(--muted)}
+.contact-control{display:block;width:100%;min-width:0;min-height:48px;padding:12px 14px;border:1px solid var(--line-strong);border-radius:9px;background:var(--ivory);color:var(--ink);font:inherit;font-size:16px;line-height:1.6;transition:background var(--duration),border-color var(--duration)}
+.contact-control::placeholder{color:var(--subtle);opacity:1}
+.contact-control:focus-visible,.service-choice input:focus-visible{outline:2px solid var(--ink);outline-offset:3px;background:var(--primary-soft)}
+.contact-control:user-invalid{border-color:var(--ink);background:var(--blush-soft)}
+textarea.contact-control{resize:vertical;min-height:150px}
+.contact-services{min-width:0;margin:0;padding:0;border:0}
+.contact-services legend{padding:0;margin-bottom:12px}
+.service-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.service-choice{display:flex;align-items:center;gap:10px;min-height:48px;padding:12px;border:1px solid var(--line-strong);border-radius:9px;background:var(--ivory);cursor:pointer;font-size:13px;font-weight:600}
+.service-choice:has(input:checked){border-color:var(--ink);background:var(--primary-soft)}
+.service-choice input{width:18px;height:18px;flex-shrink:0;accent-color:var(--ink);cursor:pointer}
+.form-hint{margin:0;color:var(--muted);font-size:12px;line-height:1.8}
+.contact-services .form-hint{margin-top:10px}
+.contact-form-actions{display:flex;flex-wrap:wrap;gap:12px}
+.contact-form-actions .btn{gap:10px;font-family:inherit}
+.contact-form-actions .btn-primary{border:1px solid var(--primary)}
+.contact-form-actions .btn-primary:hover{border-color:var(--ink)}
+.form-status{margin:0;min-height:1.8em;color:var(--ink);font-size:13px;line-height:1.8}
+.form-preview{display:grid;gap:10px}
+.form-preview[hidden]{display:none}
+.form-preview label{font-size:13px;font-weight:700}
+.form-preview textarea{min-height:220px;background:var(--soft);font-size:13px}
+.contact-form-alternative{margin:0;padding-top:18px;border-top:1px solid var(--line);font-size:12px;line-height:1.9;color:var(--muted)}
+@media(max-width:599px){.contact-form-row{grid-template-columns:1fr}.contact-form-actions{flex-direction:column}.contact-details li{padding:16px;gap:12px}.contact-details a{font-size:14px}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 *,*:before,*:after{animation:none!important;transition:none!important}
 .reveal{opacity:1;transform:none}
@@ -216,13 +294,28 @@ footer { background: var(--soft); }
 <button id="menu-toggle" class="md:hidden min-w-11 min-h-11 flex items-center justify-center border border-theme rounded-md" aria-controls="navigation" aria-expanded="false" aria-label="開啟導覽選單"><span aria-hidden="true">☰</span></button>
 </div></header>
 <main id="main">
-<section id="home" class="hero"><div class="hero-grid"></div><div class="container-custom relative z-10 grid lg:grid-cols-[1.12fr_.88fr] gap-10 items-center">
-<div><p class="eyebrow mb-7">Design with Purpose. Create with Impact.</p><h1 class="display hero-title mb-8" aria-label="以設計賦能，讓想法成為可能"><span class="type-text" id="typed-title" aria-hidden="true">以設計賦能，<br>讓想法成為可能</span><span class="cursor" id="typing-cursor" aria-hidden="true"></span></h1>
-<div class="flex items-center gap-4 mb-7"><span class="w-10 h-px bg-primary"></span><p class="text-xs sm:text-sm font-bold tracking-wide text-muted">Senior UI/UX Designer<br>Digital Experience Consultant</p></div>
-<p class="muted max-w-xl text-[15px] sm:text-[17px] mb-9">以 12 年跨產業設計經驗，整合使用者需求、商業目標與技術可行性，將複雜的挑戰轉化為直覺、優雅且具有價值的數位體驗。</p>
-<div class="flex flex-wrap gap-3"><a class="btn btn-primary" href="#works">探索我的作品 <span class="arrow">↗</span></a><a class="btn btn-outline booking-link" target="_blank" rel="noopener noreferrer">預約設計諮詢 <span class="arrow">↗</span></a></div>
-</div><div class="hero-art" aria-label="從複雜資訊到清晰設計的抽象視覺示意" role="img"><div class="art-halo"></div><div class="art-board"><div class="flex items-center gap-2 mb-7"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="w-2 h-2 rounded-full bg-warm"></span><span class="w-2 h-2 rounded-full bg-warm"></span><span class="text-[10px] font-bold text-subtle ml-auto">EXPERIENCE / SYSTEM</span></div><div class="flex items-center gap-2 mb-6"><div class="bar w-1/2"></div><div class="bar w-1/4"></div></div><div class="grid grid-cols-3 gap-3 items-center"><div class="art-node text-center"><span class="text-ink text-xl">◇</span><div class="text-[9px] mt-2 font-bold">NEEDS</div></div><div class="art-node text-center"><span class="text-ink text-xl">◎</span><div class="text-[9px] mt-2 font-bold">STRATEGY</div></div><div class="art-node text-center"><span class="text-ink text-xl">▣</span><div class="text-[9px] mt-2 font-bold">DESIGN</div></div></div><div class="flex items-center gap-3 my-6"><div class="art-line"></div><span class="text-ink text-xs">↓</span><div class="art-line"></div></div><div class="bg-primary rounded-lg p-5 text-ink"><div class="text-[10px] tracking-[.2em] opacity-70">THE OUTCOME</div><div class="text-2xl font-extrabold mt-2">Clarity by Design.</div><div class="h-1 w-2/3 bg-ink-soft rounded mt-4"></div></div></div><div class="art-float one"><span class="text-ink">●</span> Human-centered</div><div class="art-float two">✳ From complexity to clarity</div></div>
-</div><div class="container-custom relative z-10 mt-12 lg:mt-0"><a href="#about" class="inline-flex items-center gap-4 text-[10px] font-extrabold tracking-[.2em] text-muted">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div></section>
+<section id="home" class="hero" aria-labelledby="hero-heading">
+<div class="hero-media" aria-hidden="true">
+<iframe id="hero-video-frame" data-src="https://www.youtube.com/embed/fqfJe-LYgC4?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=fqfJe-LYgC4&amp;playsinline=1&amp;controls=0&amp;disablekb=1&amp;fs=0&amp;rel=0&amp;enablejsapi=1" title="首頁背景影片：OrientAI — Hardware and Software Integration for AI Computing" width="1920" height="1080" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" loading="eager"></iframe>
+</div>
+<div class="hero-shade" aria-hidden="true"></div>
+<div class="container-custom hero-main">
+<div class="hero-copy">
+<p class="eyebrow">Design with Purpose. Create with Impact.</p>
+<h1 id="hero-heading" class="display hero-title" aria-label="以設計賦能，讓想法成為可能"><span class="type-text" id="typed-title" aria-hidden="true">以設計賦能，<br><span class="hero-title-accent">讓想法成為可能</span></span></h1>
+<div class="hero-role"><span class="hero-role-rule" aria-hidden="true"></span><p>Senior UI/UX Designer<br>Digital Experience Consultant</p></div>
+<p class="hero-description">以 12 年跨產業設計經驗，整合使用者需求、商業目標與技術可行性，將複雜的挑戰轉化為直覺、優雅且具有價值的數位體驗。</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#works">探索我的作品 <span class="arrow" aria-hidden="true">↗</span></a><a class="btn btn-outline booking-link" target="_blank" rel="noopener noreferrer">預約設計諮詢 <span class="arrow" aria-hidden="true">↗</span></a></div>
+</div>
+</div>
+<div class="container-custom hero-footer">
+<a href="#about" class="hero-scroll">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
+<div class="hero-video-tools">
+<button id="hero-video-toggle" class="video-toggle" type="button" aria-controls="hero-video-frame" aria-label="播放背景影片" hidden><i class="fa-solid fa-play" aria-hidden="true"></i><span>播放背景影片</span></button>
+<a class="hero-watch-link" href="https://www.youtube.com/watch?v=fqfJe-LYgC4" target="_blank" rel="noopener noreferrer">觀看影片 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+</div>
+</div>
+</section>
 <section id="about" class="py-20 md:py-32"><div class="container-custom"><div class="reveal"><p class="eyebrow mb-5">01 / ABOUT ME</p><h2 class="section-title max-w-3xl">設計始於理解，<br>價值來自實踐。</h2></div>
 <div class="grid md:grid-cols-[.75fr_1.25fr] gap-12 lg:gap-24 mt-14 md:mt-20 items-start"><figure class="portrait-card reveal">
 <a class="portrait-shell" href="作品集/鍾皓軒-headshot-01.jpg" target="_blank" rel="noopener noreferrer" aria-label="檢視鍾皓軒個人照原圖（另開分頁）">
@@ -323,10 +416,16 @@ footer { background: var(--soft); }
 </section>
 <section id="contact" class="py-20 md:py-32" aria-labelledby="contact-title">
 <div class="container-custom">
-<div class="reveal"><p class="eyebrow mb-5">06 / CONTACT ME</p><h2 id="contact-title" class="section-title">聯絡我</h2></div>
+<div class="reveal"><p class="eyebrow mb-5">06 / CONTACT ME</p><h2 id="contact-title" class="section-title">與我們取得聯繫</h2></div>
 <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 mt-10">
 <div class="reveal">
-<p class="muted mb-6">歡迎透過社群聯繫，或填寫需求表單，讓我們一起探索合作的可能。</p>
+<p class="muted mb-6">告訴我們您的想法與需求，從 UI、UX 到完整的數位體驗，讓我們一起探索合作的可能。</p>
+<ul class="contact-details">
+<li><span class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span><div class="contact-detail-copy"><span class="contact-detail-label">聯絡信箱</span><a href="mailto:maud.lin@tpisoftware.com">maud.lin@tpisoftware.com</a></div></li>
+<li><span class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span><div class="contact-detail-copy"><span class="contact-detail-label">電話</span><a href="tel:+886226580508">02-2658-0508</a></div></li>
+<li><span class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><div class="contact-detail-copy"><span class="contact-detail-label">地址</span><address><a href="https://www.google.com/maps/search/?api=1&amp;query=114%E5%8F%B0%E5%8C%97%E5%B8%82%E5%85%A7%E6%B9%96%E5%8D%80%E7%91%9E%E5%85%89%E8%B7%AF335%E8%99%9F12%E6%A8%93" target="_blank" rel="noopener noreferrer" aria-label="在 Google 地圖查看地址（另開分頁）">114台北市內湖區瑞光路335號12樓</a></address></div></li>
+</ul>
+<h3 class="font-bold text-sm mb-4">也可以透過社群與我們交流</h3>
 <nav class="social-links" aria-label="社群聯絡方式">
 <a class="social-link social-line" href="https://line.me/ti/p/lVRhilZbL0" target="_blank" rel="noopener noreferrer" aria-label="透過 LINE 聯絡我（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-line"></i></span><span>LINE</span></a>
 <a class="social-link social-facebook" href="https://www.facebook.com/MarketingDataScienceTMR/" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 粉絲專頁（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook</span></a>
@@ -334,11 +433,25 @@ footer { background: var(--soft); }
 <a class="social-link social-github" href="https://github.com/HowardNTUST" target="_blank" rel="noopener noreferrer" aria-label="前往 GitHub 個人頁面（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-github"></i></span><span>GitHub</span></a>
 </nav>
 </div>
-<div class="card p-7 md:p-10 flex flex-col items-start reveal" aria-labelledby="request-form-title">
-<span class="w-14 h-14 rounded-xl bg-accent-soft text-ink inline-flex items-center justify-center text-2xl mb-6" aria-hidden="true"><i class="fa-solid fa-clipboard-list"></i></span>
-<h3 id="request-form-title" class="text-2xl font-extrabold mb-4">填寫需求表單</h3>
-<p class="muted text-sm mb-8">歡迎在 Google 表單分享你的需求與想法，作為後續交流的起點。</p>
-<a id="request-form-link" class="btn btn-primary mt-auto w-full sm:w-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wF6xEVu4W7Af8xy3JyfAzwhPUWFEOulca3CwPhzcmW9_0A/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" aria-label="填寫需求表單（另開分頁）">填寫需求表單 <span class="arrow" aria-hidden="true">↗</span></a>
+<div class="card contact-form-card p-7 md:p-10 reveal" aria-labelledby="request-form-title">
+<h3 id="request-form-title" class="text-2xl font-extrabold mb-3">聯絡我們</h3>
+<p class="muted text-sm">分享您的需求，我們期待與您交流。標示「必填」的欄位請務必填寫。</p>
+<form id="contact-request-form" class="contact-form" action="mailto:maud.lin@tpisoftware.com" method="post" enctype="text/plain" aria-labelledby="request-form-title" aria-describedby="contact-send-note">
+<div class="contact-form-row">
+<div class="contact-field"><label for="contact-name">您的姓名／稱呼<span class="field-required">必填</span></label><input id="contact-name" class="contact-control" type="text" name="name" autocomplete="name" placeholder="請輸入姓名或稱呼" maxlength="80" required></div>
+<div class="contact-field"><label for="contact-email">聯絡電子信箱<span class="field-required">必填</span></label><input id="contact-email" class="contact-control" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@example.com" maxlength="254" required></div>
+</div>
+<fieldset class="contact-services" aria-describedby="contact-services-hint"><legend>您的需求<span class="field-required">必填，可複選</span></legend><div class="service-choices"><label class="service-choice"><input id="contact-service-ui" type="checkbox" name="services" value="UI"><span>UI 介面設計</span></label><label class="service-choice"><input type="checkbox" name="services" value="UX"><span>UX 使用者體驗</span></label></div><p id="contact-services-hint" class="form-hint">請至少選擇一項，也可以同時選擇 UI 與 UX。</p></fieldset>
+<div class="contact-field"><label for="contact-description">需求簡介<span class="field-required">必填</span></label><textarea id="contact-description" class="contact-control" name="description" rows="6" maxlength="5000" placeholder="請詳細描述專案背景、想解決的問題、預期目標，以及希望合作的內容。" required></textarea></div>
+<div class="contact-field"><label for="contact-time">適合聯絡的時間<span class="field-required">必填</span></label><select id="contact-time" class="contact-control" name="contactTime" aria-describedby="contact-time-hint" required><option value="">請選擇方便聯絡的時段</option><option value="上午 09:00–12:00">上午 09:00–12:00</option><option value="下午 13:00–18:00">下午 13:00–18:00</option><option value="晚上 18:00–20:00">晚上 18:00–20:00</option><option value="時間彈性">時間彈性</option><option value="其他（詳見補充說明）">其他（請在下方補充）</option></select><p id="contact-time-hint" class="form-hint">以上時段皆為台北時間（UTC+8），僅作為您的聯絡偏好。</p></div>
+<div class="contact-field"><label for="contact-time-note">聯絡時間補充<span class="field-required">選填</span></label><input id="contact-time-note" class="contact-control" type="text" name="timeNote" maxlength="200" placeholder="例如：平日下午三點後，或希望先透過電子郵件聯繫。"></div>
+<p id="contact-send-note" class="form-hint">按下按鈕後，會開啟您的郵件程式並填入需求內容；請確認後自行寄出。</p>
+<div class="contact-form-actions"><button class="btn btn-primary" type="submit">開啟郵件草稿 <i class="fa-solid fa-envelope" aria-hidden="true"></i></button><button id="contact-copy-button" class="btn btn-outline" type="button">複製需求內容 <i class="fa-regular fa-copy" aria-hidden="true"></i></button></div>
+<p id="contact-form-status" class="form-status" role="status" aria-live="polite"></p>
+<div id="contact-draft-preview" class="form-preview" hidden><label for="contact-draft-text">需求內容備份</label><textarea id="contact-draft-text" class="contact-control" rows="9" readonly></textarea><p class="form-hint">如果郵件程式未開啟，您也可以複製內容，寄至 maud.lin@tpisoftware.com。</p></div>
+<noscript><p class="form-hint">也可直接點選左側聯絡信箱，或使用下方 Google 需求表單。</p></noscript>
+<p class="contact-form-alternative">偏好線上填寫？<a id="request-form-link" class="text-link" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wF6xEVu4W7Af8xy3JyfAzwhPUWFEOulca3CwPhzcmW9_0A/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" aria-label="開啟 Google 需求表單（另開分頁）">開啟 Google 需求表單 ↗</a></p>
+</form>
 </div>
 </div>
 <div class="contact-panel reveal mt-14 md:mt-20"><p class="eyebrow mb-7">LET'S CONNECT / BOOK A CONSULTATION</p><h2 class="section-title max-w-4xl">Have an Idea?<br><span class="accent-highlight">Let's Make It Happen.</span></h2><h3 class="text-xl md:text-2xl font-bold mt-8 mb-4">讓我們一起，把好的想法變成更好的體驗。</h3><p class="muted max-w-2xl">無論是全新的數位產品、既有服務的體驗優化，或是需要跨團隊協作的設計挑戰，都歡迎與我交流。讓我們從理解問題開始，探索更好的解決方案。</p><div class="flex flex-wrap gap-3 mt-10"><a class="btn btn-primary booking-link" target="_blank" rel="noopener noreferrer">預約設計諮詢 <span class="arrow">↗</span></a><a class="btn btn-outline" href="#works">Explore My Work <span class="arrow">↗</span></a></div><p class="text-xs text-muted mt-7"><span class="text-ink" aria-hidden="true">●</span> Status: Ready to Connect <span class="text-subtle">（裝飾性狀態）</span></p></div>
@@ -395,8 +508,223 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.cont
 document.addEventListener('click',e=>{if(menu.classList.contains('open')&&!nav.contains(e.target))closeMenu()});
 const updateNav=()=>nav.classList.toggle('scrolled',window.scrollY>18);window.addEventListener('scroll',updateNav,{passive:true});updateNav();
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
-function typeTitle(){const el=$('#typed-title'),cursor=$('#typing-cursor'),full='以設計賦能，\n讓想法成為可能';if(reduced.matches){el.innerHTML='以設計賦能，<br>讓想法成為可能';cursor.style.display='none';return}el.textContent='';let i=0;const tick=()=>{if(reduced.matches){el.innerHTML='以設計賦能，<br>讓想法成為可能';cursor.style.display='none';return}if(i<full.length){const c=full[i++];if(c==='\n')el.appendChild(document.createElement('br'));else el.appendChild(document.createTextNode(c));setTimeout(tick,95)}else setTimeout(()=>cursor.style.opacity='0',1400)};setTimeout(tick,400)}typeTitle();
+// 首屏標題完整顯示，讓內容在影片載入前即可閱讀。
 const reveals=[...document.querySelectorAll('.reveal')];if(!('IntersectionObserver'in window)||reduced.matches){reveals.forEach(el=>el.classList.add('visible'))}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});reveals.forEach(el=>observer.observe(el))}
 if('IntersectionObserver'in window){const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-link').forEach(a=>{const active=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}})},{rootMargin:'-25% 0px -60% 0px'});document.querySelectorAll('main section[id]').forEach(s=>sectionObserver.observe(s))}
+</script>
+
+<script>
+(() => {
+  'use strict';
+  const hero = document.getElementById('home');
+  const frame = document.getElementById('hero-video-frame');
+  const control = document.getElementById('hero-video-toggle');
+  const controlIcon = control.querySelector('i');
+  const controlLabel = control.querySelector('span');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let player = null;
+  let ready = false;
+  let failed = false;
+  let playing = false;
+  let userPaused = motion.matches;
+  let heroVisible = true;
+
+  // 以實際首屏尺寸計算 16:9 cover，橫向與直向都不留邊。
+  function coverVideo() {
+    const { width, height } = hero.getBoundingClientRect();
+    const videoWidth = Math.ceil(Math.max(width, height * 16 / 9));
+    frame.style.width = `${videoWidth}px`;
+    frame.style.height = `${Math.ceil(videoWidth * 9 / 16)}px`;
+  }
+  coverVideo();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(coverVideo).observe(hero);
+  } else {
+    window.addEventListener('resize', coverVideo, { passive: true });
+  }
+
+  function updateControl(isPlaying) {
+    playing = isPlaying;
+    const label = isPlaying ? '暫停背景影片' : '播放背景影片';
+    controlLabel.textContent = label;
+    control.setAttribute('aria-label', label);
+    controlIcon.className = `fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`;
+  }
+  function canPlay() {
+    return !userPaused && heroVisible && !document.hidden;
+  }
+  function syncPlayback() {
+    if (!ready) return;
+    if (canPlay()) {
+      player.mute();
+      player.playVideo();
+    } else {
+      player.pauseVideo();
+    }
+  }
+  function showFallback() {
+    ready = false;
+    failed = true;
+    window.clearTimeout(loadTimeout);
+    hero.classList.remove('video-ready');
+    control.hidden = true;
+    updateControl(false);
+    if (player && typeof player.pauseVideo === 'function') {
+      try { player.pauseVideo(); } catch { /* 失敗的播放器直接由下方卸載。 */ }
+    }
+    frame.src = 'about:blank';
+  }
+
+  control.addEventListener('click', () => {
+    if (!ready) return;
+    userPaused = playing;
+    syncPlayback();
+  });
+  document.addEventListener('visibilitychange', syncPlayback);
+  if ('IntersectionObserver' in window) {
+    const visibilityObserver = new IntersectionObserver(entries => {
+      heroVisible = entries[0].isIntersecting;
+      syncPlayback();
+    }, { threshold: 0 });
+    visibilityObserver.observe(hero);
+  }
+  motion.addEventListener('change', event => {
+    if (event.matches) {
+      userPaused = true;
+      syncPlayback();
+    }
+  });
+
+  const embedUrl = new URL(frame.dataset.src);
+  if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+    embedUrl.searchParams.set('origin', window.location.origin);
+  }
+  embedUrl.searchParams.set('autoplay', motion.matches ? '0' : '1');
+  frame.src = embedUrl.toString();
+
+  const loadTimeout = window.setTimeout(() => {
+    if (!ready) showFallback();
+  }, 15000);
+  function initializePlayer() {
+    if (player || failed) return;
+    player = new window.YT.Player(frame, {
+      events: {
+        onReady(event) {
+          if (failed) return;
+          window.clearTimeout(loadTimeout);
+          ready = true;
+          event.target.mute();
+          event.target.setVolume(0);
+          control.hidden = false;
+          updateControl(false);
+          syncPlayback();
+        },
+        onStateChange(event) {
+          if (!ready) return;
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            hero.classList.add('video-ready');
+            updateControl(true);
+          } else if (event.data === window.YT.PlayerState.PAUSED) {
+            updateControl(false);
+          } else if (event.data === window.YT.PlayerState.ENDED) {
+            updateControl(false);
+            if (ready && canPlay()) {
+              event.target.seekTo(0, true);
+              event.target.playVideo();
+            }
+          }
+        },
+        onAutoplayBlocked() {
+          hero.classList.remove('video-ready');
+          updateControl(false);
+        },
+        onError() {
+          window.clearTimeout(loadTimeout);
+          showFallback();
+        }
+      }
+    });
+  }
+  if (window.YT && window.YT.Player) {
+    initializePlayer();
+  } else {
+    window.onYouTubeIframeAPIReady = initializePlayer;
+    const script = document.createElement('script');
+    script.src = 'https://www.youtube.com/iframe_api';
+    script.async = true;
+    script.addEventListener('error', showFallback, { once: true });
+    document.head.appendChild(script);
+  }
+})();
+</script>
+
+<script>
+(() => {
+  'use strict';
+  const form = document.getElementById('contact-request-form');
+  const serviceInputs = [...form.querySelectorAll('input[name="services"]')];
+  const status = document.getElementById('contact-form-status');
+  const preview = document.getElementById('contact-draft-preview');
+  const draftText = document.getElementById('contact-draft-text');
+  const recipient = 'maud.lin@tpisoftware.com';
+
+  function validateServices() {
+    serviceInputs[0].setCustomValidity(serviceInputs.some(input => input.checked) ? '' : '請至少選擇一項需求：UI 或 UX。');
+  }
+  validateServices();
+  serviceInputs.forEach(input => input.addEventListener('change', validateServices));
+  form.addEventListener('input', () => {
+    status.textContent = '';
+    preview.hidden = true;
+  });
+  function prepareDraft() {
+    validateServices();
+    if (!form.reportValidity()) return null;
+    const data = new FormData(form);
+    const name = String(data.get('name')).trim();
+    const email = String(data.get('email')).trim();
+    const description = String(data.get('description')).trim();
+    if (!name || !description) {
+      status.textContent = '請填寫有效的姓名與需求簡介，內容不能只有空白。';
+      document.getElementById(!name ? 'contact-name' : 'contact-description').focus();
+      return null;
+    }
+    const services = data.getAll('services').join('、');
+    const timeNote = String(data.get('timeNote') || '').trim();
+    const subject = `網站聯絡需求｜${services}｜${name}`;
+    const body = [
+      `您的姓名／稱呼：${name}`,
+      `聯絡電子信箱：${email}`,
+      `您的需求：${services}`,
+      '',
+      '需求簡介：',
+      description,
+      '',
+      `適合聯絡的時間（台北時間 UTC+8）：${data.get('contactTime')}`,
+      `聯絡時間補充：${timeNote || '無'}`
+    ].join('\r\n');
+    draftText.value = `主旨：${subject}\r\n\r\n${body}`;
+    preview.hidden = false;
+    return { subject, body };
+  }
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const draft = prepareDraft();
+    if (!draft) return;
+    status.textContent = '需求內容已備妥，請在郵件程式中確認後寄出；若未開啟，可複製下方內容。';
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`;
+  });
+  document.getElementById('contact-copy-button').addEventListener('click', async () => {
+    if (!prepareDraft()) return;
+    try {
+      await navigator.clipboard.writeText(draftText.value);
+      status.textContent = '需求內容已複製，您可以貼上郵件並寄至 ' + recipient + '。';
+    } catch {
+      draftText.focus();
+      draftText.select();
+      status.textContent = '請複製下方已選取的需求內容，再貼上郵件寄出。';
+    }
+  });
+})();
 </script>
 </body></html>
