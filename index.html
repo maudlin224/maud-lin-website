@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LIN CIANYU | Senior UI/UX Designer & Digital Experience Consultant</title>
+<meta name="theme-color" content="#FAF9F6">
+<meta name="description" content="林倩伃 LIN CIANYU，擁有 12 年跨產業數位產品設計經驗，專注 UI/UX 設計、使用者體驗策略、互動原型與數位產品解決方案。">
+<meta property="og:type" content="website"><meta property="og:title" content="LIN CIANYU — Design with Purpose"><meta property="og:description" content="以設計賦能，讓想法成為可能。">
+<!-- 正式上線時加入 canonical、og:url、og:image 與驗證後的結構化資料。 -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root {
+  /* 核心色票：以象牙白與暖灰鋪底，亮黃作主色，綠／藍／粉作輔色。 */
+  --primary: #FFD60A;
+  --sage: #A7C957;
+  --sky: #7EC8E3;
+  --blush: #FFD1DC;
+  --ivory: #FAF9F6;
+  --warm-gray: #E8E5DF;
+  --charcoal: #1F1F1F;
+  --ink: var(--charcoal);
+  --muted: color-mix(in srgb, var(--charcoal) 78%, var(--ivory));
+  --subtle: color-mix(in srgb, var(--charcoal) 68%, var(--ivory));
+  --soft: color-mix(in srgb, var(--warm-gray) 60%, var(--ivory));
+  --line: var(--warm-gray);
+  --line-strong: color-mix(in srgb, var(--charcoal) 45%, var(--warm-gray));
+  --primary-soft: color-mix(in srgb, var(--primary) 22%, var(--ivory));
+  --sage-soft: color-mix(in srgb, var(--sage) 24%, var(--ivory));
+  --sky-soft: color-mix(in srgb, var(--sky) 24%, var(--ivory));
+  --blush-soft: color-mix(in srgb, var(--blush) 42%, var(--ivory));
+  --duration: 300ms;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;color:var(--ink);font-family:Manrope,"Noto Sans TC",sans-serif;background:var(--ivory);overflow-x:hidden}
+button,a{ -webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:4px;border-radius:4px}
+a{text-decoration:none}
+button{cursor:pointer}
+section{scroll-margin-top:88px}
+.container-custom{width:min(1280px,calc(100% - 44px));margin-inline:auto}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--ink);text-transform:uppercase}
+.display{font-weight:800;letter-spacing:-.065em;line-height:1.15}
+.section-title{font-size:clamp(2.2rem,4.4vw,3.8rem);font-weight:800;letter-spacing:-.06em;line-height:1.25}
+.muted{color:var(--muted);line-height:1.9}
+.nav{position:fixed;inset:0 0 auto;z-index:100;transition:background .3s,box-shadow .3s}
+.nav.scrolled,.nav.menu-open{background:color-mix(in srgb,var(--ivory) 94%,transparent);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--line)}
+.nav-link{font-size:12px;font-weight:700;color:var(--muted);transition:color .2s}
+.nav-link:hover,.nav-link.active{color:var(--ink);text-decoration:underline;text-decoration-color:var(--ink);text-decoration-thickness:2px;text-underline-offset:7px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:48px;padding:14px 22px;font-weight:700;font-size:13px;border-radius:7px;transition:transform .3s,box-shadow .3s,background .3s,color .3s}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--primary);color:var(--ink);box-shadow:0 12px 24px color-mix(in srgb,var(--primary) 35%,transparent)}
+.btn-primary:hover{background:var(--ink);color:var(--primary);box-shadow:0 16px 30px color-mix(in srgb,var(--primary) 50%,transparent)}
+.btn-outline{border:1px solid var(--line-strong);background:var(--ivory);color:var(--ink)}
+.arrow{display:inline-block;transition:transform .25s}
+.btn:hover .arrow,.text-link:hover .arrow{transform:translate(3px,-3px)}
+.hero{min-height:100svh;padding:150px 0 90px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 85% 35%,var(--sky-soft) 0,transparent 40%),linear-gradient(var(--ivory),var(--ivory))}
+.hero-grid{position:absolute;inset:0;opacity:.32;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(90deg,transparent 35%,var(--ink))}
+.hero-title{font-size:clamp(2.55rem,5.1vw,5.5rem);min-height:2.4em}
+.hero-title .type-text{color:var(--ink)}
+.cursor{border-right:3px solid var(--ink);animation:blink .65s step-end infinite}
+@keyframes blink{50%{border-color:transparent}
+}
+.hero-art{height:520px;position:relative;display:grid;place-items:center}
+.art-halo{position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,var(--primary) 0,color-mix(in srgb,var(--sage) 44%,transparent) 40%,transparent 70%);filter:blur(28px);animation:float 8s ease-in-out infinite}
+.art-board{width:min(100%,440px);position:relative;z-index:1;border:1px solid var(--line);background:color-mix(in srgb,var(--ivory) 92%,transparent);backdrop-filter:blur(16px);border-radius:16px;box-shadow:0 28px 80px color-mix(in srgb,var(--ink) 10%,transparent);transform:rotate(-4deg);padding:22px;animation:float 7s ease-in-out infinite}
+.art-board .bar{height:9px;background:var(--line);border-radius:20px}
+.art-node{border:1px solid var(--line);background:var(--ivory);border-radius:12px;padding:15px;box-shadow:0 12px 28px color-mix(in srgb,var(--ink) 5%,transparent)}
+.art-line{height:2px;background:linear-gradient(90deg,var(--primary),var(--sage));flex:1}
+.art-float{position:absolute;z-index:2;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:13px 17px;box-shadow:0 18px 35px color-mix(in srgb,var(--ink) 8%,transparent);font-size:11px;font-weight:800;animation:float 6s ease-in-out infinite}
+.art-float.one{top:45px;right:-10px}
+.art-float.two{bottom:48px;left:-8px;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-12px)}
+}
+.rule{border-top:1px solid var(--line)}
+.stat-num{font-size:clamp(2.5rem,4vw,4rem);font-weight:800;letter-spacing:-.07em}
+.surface{background:var(--soft)}
+.card{--card-accent:var(--primary);background:var(--ivory);border:1px solid var(--line);border-top:3px solid var(--card-accent);border-radius:12px;transition:transform var(--duration),box-shadow var(--duration),border-color var(--duration)}
+.card:hover{transform:translateY(-4px);border-color:var(--ink);border-top-color:var(--card-accent);box-shadow:0 22px 45px color-mix(in srgb,var(--ink) 5%,transparent)}
+.industry-index{font-size:11px;font-weight:800;color:var(--ink)}
+.service-card{padding:clamp(24px,3vw,42px);position:relative;overflow:hidden}
+.service-card:before{content:"";position:absolute;width:140px;height:140px;border:1px solid var(--card-accent);background:color-mix(in srgb,var(--card-accent) 18%,transparent);border-radius:50%;right:-55px;top:-55px;transition:transform .3s}
+.service-card:hover:before{transform:translate(-10px,10px)}
+.tag{display:inline-flex;font-size:11px;color:var(--muted);background:var(--soft);padding:7px 10px;border-radius:4px}
+.process-step{position:relative}
+.process-dot{width:12px;height:12px;border:3px solid var(--ink);background:var(--primary);border-radius:50%;margin-bottom:20px}
+.project{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,90px);align-items:center;padding:48px 0;border-bottom:1px solid var(--line)}
+.project:nth-child(even) .project-visual{order:2}
+.project-visual{aspect-ratio:1.28;border-radius:10px;background:linear-gradient(135deg,var(--sky-soft),var(--soft) 55%,var(--blush-soft));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.project-visual:before{content:"";width:68%;height:65%;background:var(--ivory);border:1px solid var(--line);border-radius:10px;box-shadow:0 24px 55px color-mix(in srgb,var(--ink) 11%,transparent);transform:rotate(-7deg);transition:transform .35s}
+.project:hover .project-visual:before{transform:rotate(-4deg) scale(1.04)}
+.placeholder-label{position:absolute;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em;font-weight:800;background:color-mix(in srgb,var(--ivory) 92%,transparent);padding:12px 18px;border:1px dashed var(--line-strong);border-radius:5px}
+.photo-placeholder{aspect-ratio:4/5;background:linear-gradient(135deg,var(--sky-soft),var(--soft) 60%,var(--sage-soft));border:1px dashed var(--line-strong);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em}
+.contact-panel{position:relative;overflow:hidden;background:linear-gradient(125deg,var(--sage-soft),var(--ivory) 50%,var(--blush-soft));border:1px solid var(--line);border-radius:18px;padding:clamp(36px,7vw,100px)}
+.contact-panel:after{content:"";position:absolute;width:380px;height:380px;border:1px solid var(--sage);border-radius:50%;right:-180px;bottom:-240px;pointer-events:none}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:none}
+.article-card{padding:30px}
+.disabled-link{color:var(--subtle);cursor:not-allowed}
+.skip-link{position:fixed;top:-60px;left:15px;z-index:200;background:var(--ivory);padding:12px}
+.skip-link:focus{top:15px}
+
+.social-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.social-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:112px;padding:20px 12px;border:1px solid var(--line-strong);border-radius:12px;background:var(--ivory);color:var(--ink);font-size:14px;font-weight:800;transition:transform var(--duration),box-shadow var(--duration),border-color var(--duration),background var(--duration)}
+.social-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--social-bg);color:var(--social-color);font-size:26px}
+.social-link:hover,.social-link:focus-visible{transform:translateY(-4px);border-color:var(--social-color);background:color-mix(in srgb,var(--social-bg) 20%,var(--ivory));box-shadow:0 12px 28px color-mix(in srgb,var(--ink) 5%,transparent)}
+.social-line{--social-color:var(--ink);--social-bg:var(--sage)}
+.social-facebook{--social-color:var(--ink);--social-bg:var(--sky)}
+.social-linkedin{--social-color:var(--ink);--social-bg:var(--blush)}
+.social-github{--social-color:var(--ink);--social-bg:var(--primary)}
+
+@media(max-width:767px){.hero{padding-top:130px;min-height:auto}
+.hero-art{height:330px}
+.art-board{max-width:300px}
+.art-float.one{right:0;top:20px}
+.art-float.two{left:0;bottom:12px}
+.art-halo{width:270px;height:270px}
+.project{grid-template-columns:1fr;padding:36px 0}
+.project:nth-child(even) .project-visual{order:0}
+.nav-menu{display:none;position:absolute;left:0;right:0;top:72px;background:var(--ivory);border-bottom:1px solid var(--line);padding:20px 22px;box-shadow:0 18px 24px color-mix(in srgb,var(--ink) 6%,transparent)}
+.nav-menu.open{display:flex;flex-direction:column;align-items:stretch;gap:20px}
+.nav-menu .nav-link{font-size:16px;padding:6px}
+.hero-title{min-height:2.5em}
+.container-custom{width:min(100% - 36px,1280px)}
+}
+
+@media(min-width:768px){.nav-menu{display:flex!important;align-items:center;gap:clamp(14px,2.4vw,32px)}
+}
+
+
+/* 語意色彩類別，同時供靜態 HTML 與 JavaScript 動態卡片使用。 */
+.text-ink { color: var(--ink); }
+.text-muted { color: var(--muted); }
+.text-subtle { color: var(--subtle); }
+.bg-primary { background-color: var(--primary); color: var(--ink); }
+.bg-warm { background-color: var(--warm-gray); }
+.bg-ink-soft { background-color: color-mix(in srgb, var(--ink) 16%, transparent); }
+.bg-accent-soft { background-color: color-mix(in srgb, var(--card-accent, var(--primary)) 36%, var(--ivory)); color: var(--ink); }
+.border-theme { border-color: var(--line); }
+.divide-theme > :not([hidden]) ~ :not([hidden]) { border-color: var(--line); }
+.card:nth-child(4n+2) { --card-accent: var(--sage); }
+.card:nth-child(4n+3) { --card-accent: var(--sky); }
+.card:nth-child(4n+4) { --card-accent: var(--blush); }
+.eyebrow::before { content: ""; display: inline-block; vertical-align: middle; width: 18px; height: 4px; margin-right: 10px; border-radius: 99px; background: var(--primary); }
+.brand-dot { color: var(--ink); background: var(--primary); border-radius: 4px; }
+.accent-highlight { color: var(--ink); background: linear-gradient(transparent 65%, var(--primary) 65%); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.text-link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 6px; transition: background var(--duration), text-decoration-thickness var(--duration); }
+.text-link:hover { background: var(--primary-soft); text-decoration-thickness: 2px; }
+.btn-outline:hover { background: var(--warm-gray); border-color: var(--ink); }
+.btn:active { transform: translateY(0); }
+.art-node:nth-child(1) { background: var(--sage-soft); }
+.art-node:nth-child(2) { background: var(--sky-soft); }
+.art-node:nth-child(3) { background: var(--blush-soft); }
+.art-float.one { background: var(--sage-soft); }
+.art-float.two { background: var(--blush-soft); }
+.project:nth-child(3n+1) .project-visual { background: linear-gradient(135deg, var(--primary-soft), var(--soft) 55%, var(--sage-soft)); }
+.project:nth-child(3n+2) .project-visual { background: linear-gradient(135deg, var(--sky-soft), var(--soft) 55%, var(--blush-soft)); }
+.project:nth-child(3n+3) .project-visual { background: linear-gradient(135deg, var(--sage-soft), var(--soft) 55%, var(--primary-soft)); }
+.article-visual { background: linear-gradient(135deg, var(--card-accent), var(--soft)); }
+footer { background: var(--soft); }
+::selection { color: var(--ink); background: var(--primary); }
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+*,*:before,*:after{animation:none!important;transition:none!important}
+.reveal{opacity:1;transform:none}
+.cursor{border-color:transparent}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">跳至主要內容</a>
+<header class="nav" id="navbar"><div class="container-custom h-[72px] flex items-center justify-between gap-5">
+<a href="#home" class="font-extrabold tracking-[-.06em] text-xl" aria-label="LIN CIANYU 返回首頁">LIN CIANYU<span class="brand-dot">.</span></a>
+<nav id="navigation" class="nav-menu" aria-label="主要導覽"></nav>
+<button id="menu-toggle" class="md:hidden min-w-11 min-h-11 flex items-center justify-center border border-theme rounded-md" aria-controls="navigation" aria-expanded="false" aria-label="開啟導覽選單"><span aria-hidden="true">☰</span></button>
+</div></header>
+<main id="main">
+<section id="home" class="hero"><div class="hero-grid"></div><div class="container-custom relative z-10 grid lg:grid-cols-[1.12fr_.88fr] gap-10 items-center">
+<div><p class="eyebrow mb-7">Design with Purpose. Create with Impact.</p><h1 class="display hero-title mb-8" aria-label="以設計賦能，讓想法成為可能"><span class="type-text" id="typed-title" aria-hidden="true">以設計賦能，<br>讓想法成為可能</span><span class="cursor" id="typing-cursor" aria-hidden="true"></span></h1>
+<div class="flex items-center gap-4 mb-7"><span class="w-10 h-px bg-primary"></span><p class="text-xs sm:text-sm font-bold tracking-wide text-muted">Senior UI/UX Designer<br>Digital Experience Consultant</p></div>
+<p class="muted max-w-xl text-[15px] sm:text-[17px] mb-9">以 12 年跨產業設計經驗，整合使用者需求、商業目標與技術可行性，將複雜的挑戰轉化為直覺、優雅且具有價值的數位體驗。</p>
+<div class="flex flex-wrap gap-3"><a class="btn btn-primary" href="#works">探索我的作品 <span class="arrow">↗</span></a><a class="btn btn-outline booking-link" target="_blank" rel="noopener noreferrer">預約設計諮詢 <span class="arrow">↗</span></a></div>
+</div><div class="hero-art" aria-label="從複雜資訊到清晰設計的抽象視覺示意" role="img"><div class="art-halo"></div><div class="art-board"><div class="flex items-center gap-2 mb-7"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="w-2 h-2 rounded-full bg-warm"></span><span class="w-2 h-2 rounded-full bg-warm"></span><span class="text-[10px] font-bold text-subtle ml-auto">EXPERIENCE / SYSTEM</span></div><div class="flex items-center gap-2 mb-6"><div class="bar w-1/2"></div><div class="bar w-1/4"></div></div><div class="grid grid-cols-3 gap-3 items-center"><div class="art-node text-center"><span class="text-ink text-xl">◇</span><div class="text-[9px] mt-2 font-bold">NEEDS</div></div><div class="art-node text-center"><span class="text-ink text-xl">◎</span><div class="text-[9px] mt-2 font-bold">STRATEGY</div></div><div class="art-node text-center"><span class="text-ink text-xl">▣</span><div class="text-[9px] mt-2 font-bold">DESIGN</div></div></div><div class="flex items-center gap-3 my-6"><div class="art-line"></div><span class="text-ink text-xs">↓</span><div class="art-line"></div></div><div class="bg-primary rounded-lg p-5 text-ink"><div class="text-[10px] tracking-[.2em] opacity-70">THE OUTCOME</div><div class="text-2xl font-extrabold mt-2">Clarity by Design.</div><div class="h-1 w-2/3 bg-ink-soft rounded mt-4"></div></div></div><div class="art-float one"><span class="text-ink">●</span> Human-centered</div><div class="art-float two">✳ From complexity to clarity</div></div>
+</div><div class="container-custom relative z-10 mt-12 lg:mt-0"><a href="#about" class="inline-flex items-center gap-4 text-[10px] font-extrabold tracking-[.2em] text-muted">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div></section>
+<section id="about" class="py-20 md:py-32"><div class="container-custom"><div class="reveal"><p class="eyebrow mb-5">01 / ABOUT ME</p><h2 class="section-title max-w-3xl">設計始於理解，<br>價值來自實踐。</h2></div>
+<div class="grid md:grid-cols-[.75fr_1.25fr] gap-12 lg:gap-24 mt-14 md:mt-20 items-start"><div class="reveal"><div class="photo-placeholder"><div><div class="text-5xl mb-5 text-ink">◇</div>PORTRAIT PLACEHOLDER<br><span class="normal-case tracking-normal">個人照片待提供</span></div></div><div class="mt-5"><p class="font-extrabold text-xl">林倩伃 <span class="text-sm text-subtle ml-2">LIN CIANYU</span></p><p class="text-sm text-muted mt-2">Senior UI/UX Designer</p></div></div><div class="reveal"><p class="text-xl md:text-2xl font-bold leading-relaxed tracking-tight mb-7">「好的設計，不只是讓產品看起來更好，而是讓每一次互動都更直覺、更有效率。」</p><p class="muted mb-5">擁有 12 年數位產品與使用者介面設計經驗，專注於將使用者需求、商業目標與技術可行性整合為兼具美感與實用性的數位體驗。</p><p class="muted">相信設計不只是視覺呈現，更是透過系統性思考與持續優化，為使用者與企業創造長期價值。</p><div class="grid grid-cols-3 gap-4 border-y border-theme py-9 mt-10"><div><div class="stat-num text-ink">12+</div><div class="text-xs text-muted mt-2">Years of Experience</div></div><div><div class="stat-num text-ink text-[clamp(1.6rem,3vw,3rem)]">Cross<br>Industry</div><div class="text-xs text-muted mt-2">Design Expertise</div></div><div><div class="stat-num text-ink">0→1</div><div class="text-xs text-muted mt-2">Product Design</div></div></div></div></div>
+<div class="mt-20 reveal"><p class="eyebrow mb-6">INDUSTRY EXPERTISE</p><div class="grid md:grid-cols-2 gap-4" id="industries"></div></div>
+<div class="mt-20 reveal"><p class="eyebrow mb-6">CORE COMPETENCIES</p><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="competencies"></div></div>
+<div class="mt-16 grid lg:grid-cols-2 gap-12 lg:gap-20"><div class="reveal"><p class="eyebrow mb-7">DESIGN TOOLKIT</p><div id="toolkit" class="divide-y divide-theme border-y border-theme"></div></div><div class="reveal"><p class="eyebrow mb-7">DESIGN PHILOSOPHY</p><h3 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-5">Design with Purpose.<br><span class="accent-highlight">Create with Impact.</span></h3><p class="muted">我相信，真正優秀的設計來自對問題的深入理解，而非單純追求視覺效果。從需求探索、設計規劃到產品落地，我致力於在使用者體驗、商業價值與技術限制之間找到最佳平衡，透過清晰的設計邏輯與持續迭代，打造直覺、可靠且具有長期價值的數位產品。讓設計不只解決當下的問題，更為未來創造可能。</p></div></div>
+</div></section>
+<section id="services" class="surface py-20 md:py-32"><div class="container-custom"><div class="reveal grid lg:grid-cols-[1fr_.75fr] gap-8 items-end"><div><p class="eyebrow mb-5">02 / WHAT I DO</p><h2 class="section-title">以設計賦能產品，<br>讓創新構想轉化為實際價值。</h2></div><p class="muted">從需求探索到產品落地，提供完整的 UI/UX 設計解決方案。結合 12 年跨產業經驗，協助團隊釐清問題、建立方向，將複雜需求轉化為直覺、高效且具擴展性的數位體驗。</p></div><div class="grid md:grid-cols-2 gap-4 mt-14" id="service-cards"></div>
+<div class="mt-24 reveal"><div class="flex flex-wrap justify-between items-end gap-4 mb-10"><div><p class="eyebrow mb-4">DESIGN PROCESS</p><h3 class="text-3xl md:text-4xl font-extrabold tracking-tight">From Complexity to Clarity.</h3></div><p class="text-sm text-muted">依專案需求彈性調整的設計方法框架</p></div><div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-3 border-l md:border-l-0 md:border-t border-theme ml-2 md:ml-0" id="process"></div></div>
+<div class="mt-20 border-t border-theme pt-12 flex flex-col md:flex-row gap-8 justify-between items-start md:items-center reveal"><div><h3 class="text-2xl font-extrabold mb-3">從 0 到 1，讓每個設計決策創造價值。</h3><p class="muted max-w-2xl">不只是提供介面設計，更致力於協助團隊釐清問題、建立方向並推動產品實現。</p></div><a class="btn btn-primary booking-link shrink-0" target="_blank" rel="noopener noreferrer">Let's Build Something Meaningful <span class="arrow">↗</span></a></div></div></section>
+<section id="works" class="py-20 md:py-32"><div class="container-custom"><div class="reveal"><p class="eyebrow mb-5">03 / SELECTED WORKS</p><h2 class="section-title">讓設計思考，<br>成為看得見的成果。</h2><p class="muted max-w-2xl mt-7">每個專案都是一次理解問題、探索可能與創造價值的過程。以下為案例展示架構，正式作品內容與畫面將陸續補充。</p></div><div id="projects" class="mt-10"></div></div></section>
+<section id="insights" class="surface py-20 md:py-32"><div class="container-custom"><div class="reveal flex flex-col md:flex-row justify-between gap-8 items-start md:items-end"><div><p class="eyebrow mb-5">04 / INSIGHTS</p><h2 class="section-title">持續探索設計、科技<br>與使用者體驗的可能。</h2></div><p class="muted max-w-sm">分享關於數位產品設計、使用者體驗、設計方法與新興技術的觀察與思考。</p></div><div class="grid md:grid-cols-3 gap-4 mt-14" id="articles"></div></div></section>
+<section id="solutions" class="py-20 md:py-32" aria-labelledby="solutions-title">
+<div class="container-custom">
+<div class="reveal"><p class="eyebrow mb-5">05 / PRODUCTS &amp; SOLUTIONS</p><h2 id="solutions-title" class="section-title">核心產品與技術解決方案</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+<article class="card p-7 md:p-8 flex flex-col reveal">
+<div class="w-14 h-14 rounded-xl bg-accent-soft text-ink inline-flex items-center justify-center text-2xl mb-7" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
+<h3 class="text-xl font-extrabold leading-relaxed mb-4">Vibe Coding：行銷數據分析學習圈</h3>
+<p class="muted text-sm mb-8 grow">訂閱Vibe Coding行銷數據分析學習圈，跟著我們一同走入行銷數據分析與vibe coding自動化的世界</p>
+<a class="text-link inline-flex items-center gap-3 text-sm font-extrabold text-ink self-start min-h-11" href="https://courses.taiwanmds.com/product/information?p=02c0c7b9ec7b11f0b3480242ac110002" target="_blank" rel="noopener noreferrer">探索學習圈 <span class="arrow" aria-hidden="true">↗</span></a>
+</article>
+<article class="card p-7 md:p-8 flex flex-col reveal">
+<div class="w-14 h-14 rounded-xl bg-accent-soft text-ink inline-flex items-center justify-center text-2xl mb-7" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
+<h3 class="text-xl font-extrabold leading-relaxed mb-4">保險機器人：當經驗成為奇點，AI更是保險未來的引擎</h3>
+<p class="muted text-sm mb-8 grow">從經驗、法條到正確說明，奇點讓每位保險專業者擁有一位懂法的科技夥伴。</p>
+<a class="text-link inline-flex items-center gap-3 text-sm font-extrabold text-ink self-start min-h-11" href="https://judgai.com/" target="_blank" rel="noopener noreferrer">認識保險機器人 <span class="arrow" aria-hidden="true">↗</span></a>
+</article>
+<article class="card p-7 md:p-8 flex flex-col reveal">
+<div class="w-14 h-14 rounded-xl bg-accent-soft text-ink inline-flex items-center justify-center text-2xl mb-7" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></div>
+<h3 class="text-xl font-extrabold leading-relaxed mb-4">SayMind：一站式語音轉錄，AI 筆記整理，自動口條訓練</h3>
+<p class="muted text-sm mb-8 grow">使用 LangChain 搭建的 RAG 系統，可上傳 PDF 並進行精準問答。</p>
+<a class="text-link inline-flex items-center gap-3 text-sm font-extrabold text-ink self-start min-h-11" href="https://judgai.com/saymind" target="_blank" rel="noopener noreferrer">體驗 SayMind <span class="arrow" aria-hidden="true">↗</span></a>
+</article>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 md:py-32" aria-labelledby="contact-title">
+<div class="container-custom">
+<div class="reveal"><p class="eyebrow mb-5">06 / CONTACT ME</p><h2 id="contact-title" class="section-title">聯絡我</h2></div>
+<div class="grid lg:grid-cols-2 gap-6 lg:gap-10 mt-10">
+<div class="reveal">
+<p class="muted mb-6">歡迎透過社群聯繫，或填寫需求表單，讓我們一起探索合作的可能。</p>
+<nav class="social-links" aria-label="社群聯絡方式">
+<a class="social-link social-line" href="https://line.me/ti/p/lVRhilZbL0" target="_blank" rel="noopener noreferrer" aria-label="透過 LINE 聯絡我（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-line"></i></span><span>LINE</span></a>
+<a class="social-link social-facebook" href="https://www.facebook.com/MarketingDataScienceTMR/" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 粉絲專頁（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook</span></a>
+<a class="social-link social-linkedin" href="https://www.linkedin.com/in/howardzhong/" target="_blank" rel="noopener noreferrer" aria-label="前往 LinkedIn 個人檔案（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span><span>LinkedIn</span></a>
+<a class="social-link social-github" href="https://github.com/HowardNTUST" target="_blank" rel="noopener noreferrer" aria-label="前往 GitHub 個人頁面（另開分頁）"><span class="social-icon" aria-hidden="true"><i class="fa-brands fa-github"></i></span><span>GitHub</span></a>
+</nav>
+</div>
+<div class="card p-7 md:p-10 flex flex-col items-start reveal" aria-labelledby="request-form-title">
+<span class="w-14 h-14 rounded-xl bg-accent-soft text-ink inline-flex items-center justify-center text-2xl mb-6" aria-hidden="true"><i class="fa-solid fa-clipboard-list"></i></span>
+<h3 id="request-form-title" class="text-2xl font-extrabold mb-4">填寫需求表單</h3>
+<p class="muted text-sm mb-8">歡迎在 Google 表單分享你的需求與想法，作為後續交流的起點。</p>
+<a id="request-form-link" class="btn btn-primary mt-auto w-full sm:w-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSe0wF6xEVu4W7Af8xy3JyfAzwhPUWFEOulca3CwPhzcmW9_0A/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" aria-label="填寫需求表單（另開分頁）">填寫需求表單 <span class="arrow" aria-hidden="true">↗</span></a>
+</div>
+</div>
+<div class="contact-panel reveal mt-14 md:mt-20"><p class="eyebrow mb-7">LET'S CONNECT / BOOK A CONSULTATION</p><h2 class="section-title max-w-4xl">Have an Idea?<br><span class="accent-highlight">Let's Make It Happen.</span></h2><h3 class="text-xl md:text-2xl font-bold mt-8 mb-4">讓我們一起，把好的想法變成更好的體驗。</h3><p class="muted max-w-2xl">無論是全新的數位產品、既有服務的體驗優化，或是需要跨團隊協作的設計挑戰，都歡迎與我交流。讓我們從理解問題開始，探索更好的解決方案。</p><div class="flex flex-wrap gap-3 mt-10"><a class="btn btn-primary booking-link" target="_blank" rel="noopener noreferrer">預約設計諮詢 <span class="arrow">↗</span></a><a class="btn btn-outline" href="#works">Explore My Work <span class="arrow">↗</span></a></div><p class="text-xs text-muted mt-7"><span class="text-ink" aria-hidden="true">●</span> Status: Ready to Connect <span class="text-subtle">（裝飾性狀態）</span></p></div>
+</div>
+</section>
+</main>
+<footer class="border-t border-theme py-12"><div class="container-custom"><div class="flex flex-col md:flex-row justify-between gap-10"><div><a href="#home" class="font-extrabold text-xl tracking-tight">LIN CIANYU<span class="brand-dot">.</span></a><p class="text-sm text-muted mt-3">Senior UI/UX Designer</p><p class="text-sm text-muted mt-2">Design with Purpose. Create with Impact.</p></div><nav aria-label="頁尾導覽" id="footer-nav" class="flex flex-wrap gap-x-6 gap-y-3 items-start"></nav></div><div class="border-t border-theme mt-12 pt-6 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted"><p>© 2026 LIN CIANYU. All Rights Reserved.</p><p>Designed with intention.</p></div></div></footer>
+<script>
+'use strict';
+// 所有可維護資料集中於此；示意內容不得視為已公開案例或文章。
+const CONFIG={bookingUrl:'https://calendar.app.google/zedHygVcNMq8u8BK6',navigation:[['About','about'],['Services','services'],['Works','works'],['Insights','insights'],['Contact','contact']]};
+const INDUSTRIES=[
+['Financial Services','金融服務','曾參與國泰金控、中國信託相關專案，涵蓋數位金融服務與操作介面設計，重視資訊清晰度、安全感與操作效率。'],
+['Aviation','航空產業','參與長榮航空相關系統介面優化，從使用情境出發，改善資訊架構與操作流程。'],
+['Technology & Manufacturing','科技製造','具備台積電相關專案經驗，理解企業系統對資訊整合、流程效率及介面一致性的需求。'],
+['Cross-Industry Experience','多元產業','涵蓋醫療服務、電子商務與企業軟體，能快速掌握不同產業的業務邏輯與使用者需求。']];
+const COMPETENCIES=[['◇','UI Design','建立一致的視覺語言與清晰介面。'],['◎','UX Design','規劃資訊架構與使用者流程。'],['▣','Prototyping','將概念轉化為可溝通的互動原型。'],['↗','Cross-functional Collaboration','串聯跨職能團隊，推進設計落地。']];
+const TOOLKIT=[['Interface & Experience','Figma / Adobe XD'],['Visual & Branding','Adobe Photoshop / Adobe Illustrator'],['Motion & Video','Adobe After Effects / Adobe Premiere'],['Design Handoff','Zeplin']];
+const SERVICES=[
+{en:'UX Design',zh:'使用者體驗策略',description:'透過需求分析、使用者痛點探索、資訊架構與操作流程規劃，釐清產品定位及核心需求，建立符合使用情境的體驗架構。',tags:['Research','User Flow','Information Architecture']},
+{en:'UI Design',zh:'使用者介面設計',description:'打造兼具品牌識別、美感與易用性的數位介面，建立一致的視覺語言與設計規範，提升產品辨識度及操作效率。',tags:['Visual Design','Design System','Interface']},
+{en:'Prototyping',zh:'互動原型驗證',description:'運用 Wireframe 與互動原型，將抽象概念具體化，協助團隊快速溝通、驗證設計方向，降低開發過程中的理解落差與修改成本。',tags:['Wireframe','Prototype','Interaction']},
+{en:'Cross-functional Collaboration',zh:'跨團隊協作',description:'串聯產品經理、工程師及業務團隊，整合不同專業觀點，確保設計方案兼顧使用者價值、商業需求與技術可行性。',tags:['Collaboration','Design Handoff','Delivery']}];
+const PROCESS=[['Discover','探索需求'],['Define','定義問題'],['Design','設計方案'],['Validate','驗證方向'],['Deliver','協作落地']];
+const PROJECTS=[
+{id:'01',category:'Financial Technology',title:'金融數位產品設計',description:'數位金融服務、網路銀行與線上投保相關的設計經驗。案例細節與可公開畫面待整理。',tags:['UX Strategy','Interface Design','Financial Services'],image:null,status:'案例整理中',url:null},
+{id:'02',category:'Aviation System',title:'航空資訊系統體驗優化',description:'聚焦複雜資訊架構、操作流程與企業系統介面優化。案例細節與可公開畫面待整理。',tags:['Information Architecture','User Flow','Enterprise UX'],image:null,status:'案例整理中',url:null},
+{id:'03',category:'Enterprise Solutions',title:'企業數位系統設計',description:'以資訊整合、流程效率及跨部門協作為主題的作品展示區。實際內容待補。',tags:['Enterprise Design','UI Design'],image:null,status:'案例整理中',url:null},
+{id:'04',category:'Digital Commerce',title:'數位商務體驗設計',description:'聚焦商品瀏覽、購買流程與數位服務體驗的作品展示區。實際內容待補。',tags:['Commerce','Product Experience'],image:null,status:'案例整理中',url:null}];
+const ARTICLES=[
+{category:'UX Strategy',title:'從複雜需求到清晰體驗',summary:'示意主題：如何以設計思考建立產品體驗的共同語言。',date:null,minutes:null,url:null},
+{category:'Design Process',title:'從原型到設計決策',summary:'示意主題：如何運用互動原型協助團隊對齊方向。',date:null,minutes:null,url:null},
+{category:'AI & Digital Experience',title:'AI 時代的設計師思維',summary:'示意主題：探索新興工具與人本設計的關係。',date:null,minutes:null,url:null}];
+const $=s=>document.querySelector(s);
+const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function render(){
+$('#navigation').innerHTML=CONFIG.navigation.map(([name,id])=>`<a class="nav-link" href="#${id}">${name}</a>`).join('')+`<a class="btn btn-primary !min-h-[44px] !py-2 booking-link" target="_blank" rel="noopener noreferrer">Let's Connect <span class="arrow">↗</span></a>`;
+$('#footer-nav').innerHTML=CONFIG.navigation.map(([name,id])=>`<a class="nav-link" href="#${id}">${name}</a>`).join('');
+document.querySelectorAll('.booking-link').forEach(a=>a.href=CONFIG.bookingUrl);
+$('#industries').innerHTML=INDUSTRIES.map((x,i)=>`<article class="card p-7"><span class="industry-index">0${i+1} / ${safe(x[0])}</span><h3 class="text-xl font-extrabold mt-5 mb-3">${safe(x[1])}</h3><p class="muted text-sm">${safe(x[2])}</p></article>`).join('');
+$('#competencies').innerHTML=COMPETENCIES.map(x=>`<article class="card p-6"><div class="text-ink text-3xl mb-8" aria-hidden="true">${x[0]}</div><h3 class="font-extrabold mb-3">${safe(x[1])}</h3><p class="muted text-sm">${safe(x[2])}</p></article>`).join('');
+$('#toolkit').innerHTML=TOOLKIT.map(x=>`<div class="py-5"><h3 class="font-bold text-sm mb-2">${safe(x[0])}</h3><p class="text-sm text-muted">${safe(x[1])}</p></div>`).join('');
+$('#service-cards').innerHTML=SERVICES.map((s,i)=>`<article class="card service-card reveal"><div class="flex justify-between items-center mb-12"><span class="text-ink text-xs font-extrabold">0${i+1} / SERVICE</span><span class="text-ink text-3xl" aria-hidden="true">◇</span></div><p class="text-xs text-muted font-bold tracking-wider mb-2">${safe(s.en)}</p><h3 class="text-2xl font-extrabold mb-5">${safe(s.zh)}</h3><p class="muted text-sm mb-8">${safe(s.description)}</p><div class="flex flex-wrap gap-2">${s.tags.map(t=>`<span class="tag">${safe(t)}</span>`).join('')}</div></article>`).join('');
+$('#process').innerHTML=PROCESS.map((x,i)=>`<div class="process-step pl-6 md:pl-0 -ml-[7px] md:ml-0"><div class="process-dot"></div><p class="text-xs text-ink font-extrabold mb-2">0${i+1} / ${x[0]}</p><h4 class="font-bold">${x[1]}</h4></div>`).join('');
+$('#projects').innerHTML=PROJECTS.map(p=>`<article class="project reveal"><div class="project-visual">${p.image?`<img src="${safe(p.image)}" alt="${safe(p.title)} 專案畫面" loading="lazy" class="absolute inset-0 w-full h-full object-cover">`:''}<span class="placeholder-label">${p.image?'PROJECT IMAGE':'PROJECT IMAGE PLACEHOLDER'}<br><span class="font-normal tracking-normal">實際作品圖片待提供</span></span></div><div><p class="eyebrow mb-5">${safe(p.id)} / ${safe(p.category)}</p><h3 class="text-2xl md:text-4xl font-extrabold tracking-tight mb-5">${safe(p.title)}</h3><p class="muted mb-7">${safe(p.description)}</p><div class="flex flex-wrap gap-2 mb-8">${p.tags.map(t=>`<span class="tag">${safe(t)}</span>`).join('')}</div>${p.url?`<a class="text-link text-sm font-extrabold text-ink" href="${safe(p.url)}">View Case Study <span class="arrow">↗</span></a>`:`<span class="text-xs font-bold text-muted border border-theme px-4 py-3 rounded-md inline-flex">${safe(p.status)} · 尚未開放案例連結</span>`}</div></article>`).join('');
+$('#articles').innerHTML=ARTICLES.map((a,i)=>`<article class="card article-card reveal"><div class="aspect-[1.6] article-visual rounded-md flex items-center justify-center mb-8" aria-hidden="true"><span class="text-6xl text-ink">${['◇','◎','▣'][i]}</span></div><div class="flex justify-between items-center gap-3 mb-5"><span class="eyebrow !tracking-[.1em]">${safe(a.category)}</span><span class="text-[10px] font-bold text-muted border border-theme px-2 py-1 rounded">DEMO CONTENT</span></div><h3 class="text-xl font-extrabold mb-4">${safe(a.title)}</h3><p class="muted text-sm mb-7">${safe(a.summary)}</p><p class="text-xs text-subtle mb-5">${a.date?safe(a.date):'尚未發布'} · ${a.minutes?safe(a.minutes)+' 分鐘閱讀':'閱讀時間待定'}</p>${a.url?`<a href="${safe(a.url)}" class="text-link text-ink text-sm font-bold">Read Article ↗</a>`:'<span class="disabled-link text-sm font-bold" aria-disabled="true">文章準備中 ↗</span>'}</article>`).join('');
+}
+render();
+const nav=$('#navbar'),toggle=$('#menu-toggle'),menu=$('#navigation');
+function closeMenu(){menu.classList.remove('open');nav.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','開啟導覽選單');toggle.firstElementChild.textContent='☰'}
+toggle.addEventListener('click',()=>{const open=!menu.classList.contains('open');menu.classList.toggle('open',open);nav.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'關閉導覽選單':'開啟導覽選單');toggle.firstElementChild.textContent=open?'✕':'☰'});
+menu.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){closeMenu();toggle.focus()}});
+document.addEventListener('click',e=>{if(menu.classList.contains('open')&&!nav.contains(e.target))closeMenu()});
+const updateNav=()=>nav.classList.toggle('scrolled',window.scrollY>18);window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+function typeTitle(){const el=$('#typed-title'),cursor=$('#typing-cursor'),full='以設計賦能，\n讓想法成為可能';if(reduced.matches){el.innerHTML='以設計賦能，<br>讓想法成為可能';cursor.style.display='none';return}el.textContent='';let i=0;const tick=()=>{if(reduced.matches){el.innerHTML='以設計賦能，<br>讓想法成為可能';cursor.style.display='none';return}if(i<full.length){const c=full[i++];if(c==='\n')el.appendChild(document.createElement('br'));else el.appendChild(document.createTextNode(c));setTimeout(tick,95)}else setTimeout(()=>cursor.style.opacity='0',1400)};setTimeout(tick,400)}typeTitle();
+const reveals=[...document.querySelectorAll('.reveal')];if(!('IntersectionObserver'in window)||reduced.matches){reveals.forEach(el=>el.classList.add('visible'))}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});reveals.forEach(el=>observer.observe(el))}
+if('IntersectionObserver'in window){const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-link').forEach(a=>{const active=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}})},{rootMargin:'-25% 0px -60% 0px'});document.querySelectorAll('main section[id]').forEach(s=>sectionObserver.observe(s))}
+</script>
+</body></html>
